@@ -18,7 +18,7 @@ public class Window {
     private final int height;
     private final String title;
     private long glfwWindow;
-    private float r, g, b, a;
+    public float r, g, b, a;
     private boolean fadeToBlack = false;
 
     private static Window window = null;
@@ -107,11 +107,14 @@ public class Window {
         glfwShowWindow(glfwWindow);
 
         GL.createCapabilities();
+
+        Window.changeScene(0);
     }
 
     public void loop() {
         float beginTime = Time.getTime();
-        float endTime = Time.getTime();
+        float endTime;
+        float dt = -1.0f;
 
         while (!glfwWindowShouldClose(glfwWindow)) {
 
@@ -120,17 +123,14 @@ public class Window {
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            if(fadeToBlack) {
-                r = Math.max(r - 0.1f, 0);
-                g = Math.max(g - 0.1f, 0);
-                b = Math.max(b - 0.1f, 0);
-
+            if(dt >= 0) {
+                currentScene.update(dt);
             }
 
             glfwSwapBuffers(glfwWindow);
 
             endTime = Time.getTime();
-            float dt = endTime - beginTime;
+            dt = endTime - beginTime;
             beginTime = endTime;
         }
     }
