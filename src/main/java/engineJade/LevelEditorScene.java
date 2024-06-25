@@ -2,11 +2,12 @@ package engineJade;
 
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
+import org.lwjgl.opengl.GL;
+import org.w3c.dom.Text;
 import renderer.Shader;
+import renderer.Texture;
 import util.Time;
 
-import java.awt.event.KeyEvent;
-import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
@@ -19,10 +20,11 @@ public class LevelEditorScene extends Scene {
     private int vertexID, fragmentID, shaderProgram;
 
     private  float[] vertexArray = {
-        100.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f, 1.0f, // Bottom right 0
-        -0.5f, 100.5f, 0.0f,  0.0f, 1.0f, 0.0f, 1.0f, // Top Left     1
-        100.5f, 100.5f, 0.0f,   0.0f, 0.0f, 1.0f, 1.0f, // Top right    2
-        -0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, // Bottom Left  3
+        // Position           // Color                     // UV Coordinates
+        100f, 0f,   0.0f,     1.0f, 0.0f, 0.0f, 1.0f,      1, 1, // Bottom right 0
+          0f, 100f, 0.0f,     0.0f, 1.0f, 0.0f, 1.0f,      0, 0, // Top Left     1
+        100f, 100f, 0.0f,     0.0f, 0.0f, 1.0f, 1.0f,      1, 0, // Top right    2
+          0f, 0f,   0.0f,     1.0f, 1.0f, 0.0f, 1.0f,      0, 1  // Bottom Left  3
     };
 
     private int[] elementArray = {
@@ -33,6 +35,7 @@ public class LevelEditorScene extends Scene {
     private int vaoID, vboID, eboID;
 
     private Shader defaultShader;
+    private Texture testTexture;
 
     public LevelEditorScene() {
     }
@@ -42,6 +45,7 @@ public class LevelEditorScene extends Scene {
         this.camera = new Camera(new Vector2f());
         defaultShader = new Shader("assets/shaders/default.glsl");
         defaultShader.compile();
+        this.testTexture = new Texture("assets/images/testImage.jpg");
 
         vaoID = glGenVertexArrays();
         glBindVertexArray(vaoID);
@@ -62,14 +66,16 @@ public class LevelEditorScene extends Scene {
 
         int positionsSize = 3;
         int colorSize = 4;
-        int floatSizeBytes = 4;
-        int vertexSizeBytes = (positionsSize + colorSize) * floatSizeBytes;
+        int uvSize = 2;
+        int vertexSizeBytes = (positionsSize + colorSize + uvSize) * Float.BYTES;
         glVertexAttribPointer(0, positionsSize, GL_FLOAT, false, vertexSizeBytes, 0);
         glEnableVertexAttribArray(0);
 
-        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionsSize * floatSizeBytes);
+        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionsSize * Float.BYTES);
         glEnableVertexAttribArray(1);
 
+        glVertexAttribPointer(2, uvSize, GL_FLOAT, false, vertexSizeBytes, (positionsSize + colorSize) * Float.BYTES);
+        glEnableVertexAttribArray(2);
     }
 
     @Override
@@ -77,8 +83,11 @@ public class LevelEditorScene extends Scene {
         camera.position.x -= dt *50.0f;
         camera.position.y -= dt *20.0f;
 
-
         defaultShader.use();
+        defaultShader.uploadTexture("TEX_SAMPLER", 0);
+        glActiveTexture(GL_TEXTURE0);
+        testTexture.bind();
+
         defaultShader.uploadMat4f("uProjection", camera.getProjectionMatrix());
         defaultShader.uploadMat4f("uView", camera.getViewMatrix());
         defaultShader.uploadFloat("uTime", Time.getTime());
