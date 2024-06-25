@@ -49,7 +49,7 @@ public class LevelEditorScene extends Scene {
     public void init() {
         System.out.println("Creating 'test object'");
         this.testObject = new GameObject("test object");
-        this.testObject.addComponent(new SpriteRenderer());
+        //this.testObject.addComponent(new SpriteRenderer());
         this.testObject.addComponent(new FontRenderer());
         this.addGameObjectToScene(this.testObject);
 
@@ -118,7 +118,7 @@ public class LevelEditorScene extends Scene {
         if(!firstTime) {
             System.out.println("Creating Game Object");
             GameObject go = new GameObject("Game Test 2");
-            go.addComponent(new SpriteRenderer());
+            //go.addComponent(new SpriteRenderer());
             this.addGameObjectToScene(go);
             firstTime = true;
         }

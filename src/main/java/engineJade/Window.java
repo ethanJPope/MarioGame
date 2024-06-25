@@ -59,6 +59,10 @@ public class Window {
         return Window.window;
     }
 
+    public static Scene getScene() {
+        return get().currentScene;
+    }
+
     public void run() throws IllegalAccessException {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
         init();
