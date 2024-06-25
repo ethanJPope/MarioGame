@@ -4,6 +4,10 @@ import components.SpriteRenderer;
 import engineJade.Window;
 import org.joml.Vector4f;
 import org.lwjgl.system.CallbackI;
+import util.AssetPool;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
@@ -14,10 +18,14 @@ public class RenderBatch {
 
     private final int POS_SIZE = 2;
     private final int COLOR_SIZE = 4;
+    private final int TEX_COORDS_SIZE = 2;
+    private final int TEX_ID_SIZE = 1;
 
     private final int POS_OFFSET = 0;
     private final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES;
-    private final int VERTEX_SIZE = 6;
+    private final int TEX_COORDS_OFFSET = COLOR_OFFSET + COLOR_SIZE * Float.BYTES;
+    private final int TEX_ID_OFFSET = TEX_COORDS_OFFSET + TEX_COORDS_SIZE * Float.BYTES;
+    private final int VERTEX_SIZE = 9;
     private final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
 
     private SpriteRenderer[] sprites;
@@ -25,13 +33,13 @@ public class RenderBatch {
     private boolean hasRoom;
     private float[] vertices;
 
+    private List<Texture> textures;
     private int vaoID, vboID;
     private int maxBatchSize;
     private Shader shader;
 
     public RenderBatch(int maxBatchSize) {
-        shader = new Shader("assets/shaders/default.glsl");
-        shader.compile();
+        shader = AssetPool.getShader("assets/shaders/default.glsl");
         this.sprites = new SpriteRenderer[maxBatchSize];
         this.maxBatchSize = maxBatchSize;
 
@@ -39,6 +47,7 @@ public class RenderBatch {
 
         this.numSprites = 0;
         this.hasRoom = true;
+        this.textures = new ArrayList<>();
     }
 
     public void start() {
@@ -60,12 +69,23 @@ public class RenderBatch {
         glVertexAttribPointer(1, COLOR_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, COLOR_OFFSET);
         glEnableVertexAttribArray(1);
 
+        glVertexAttribPointer(2, TEX_COORDS_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, TEX_COORDS_OFFSET);
+        glEnableVertexAttribArray(2);
+
+        glVertexAttribPointer(3, TEX_ID_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, TEX_ID_OFFSET);
+        glEnableVertexAttribArray(3);
     }
 
     public void addSprite(SpriteRenderer spr) {
         int index = this.numSprites;
         this.sprites[index] = spr;
         this.numSprites++;
+
+        if(spr.getTexture() != null) {
+            if(!textures.contains(spr.getTexture())) {
+                textures.addLast(spr.getTexture());
+            }
+        }
 
         loadVertexProperties(index);
 
@@ -102,6 +122,13 @@ public class RenderBatch {
 
         Vector4f color = sprite.getColor();
 
+        int texID = 0;
+        if(sprite.getTexture() != null) {
+            for (int i = 0; i < textures.size(); i++) {
+                texID  =1;
+                break;
+            }
+        }
         float xAdd = 1.0f;
         float yAdd = 1.0f;
         for (int i = 0; i < 4; i++) {
@@ -119,6 +146,8 @@ public class RenderBatch {
             vertices[offset + 3] = color.y;
             vertices[offset + 4] = color.z;
             vertices[offset + 5] = color.w;
+
+
 
             offset += VERTEX_SIZE;
         }
