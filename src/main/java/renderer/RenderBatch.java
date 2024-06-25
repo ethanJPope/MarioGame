@@ -105,7 +105,22 @@ public class RenderBatch {
         float xAdd = 1.0f;
         float yAdd = 1.0f;
         for (int i = 0; i < 4; i++) {
+            if (i == 1) {
+                yAdd = 0.0f;
+            } else if (i == 2) {
+                xAdd = 0.0f;
+            } else if (i == 3) {
+                yAdd = 1.0f;
+            }
+            vertices[offset] = sprite.gameObject.transform.position.x + (xAdd * sprite.gameObject.transform.scale.x);
+            vertices[offset + 1] = sprite.gameObject.transform.position.y + (yAdd * sprite.gameObject.transform.scale.y);
 
+            vertices[offset + 2] = color.x;
+            vertices[offset + 3] = color.y;
+            vertices[offset + 4] = color.z;
+            vertices[offset + 5] = color.w;
+
+            offset += VERTEX_SIZE;
         }
     }
 
@@ -125,10 +140,14 @@ public class RenderBatch {
 
         elements[offsetArrayIndex] = offset + 3;
         elements[offsetArrayIndex + 1] = offset + 2;
-        elements[offsetArrayIndex + 2] = offset + 1;
+        elements[offsetArrayIndex + 2] = offset + 0;
 
-        elements[offsetArrayIndex + 3] = offset + 3;
+        elements[offsetArrayIndex + 3] = offset + 0;
         elements[offsetArrayIndex + 4] = offset + 2;
         elements[offsetArrayIndex + 5] = offset + 1;
+    }
+
+    public boolean hasRoom() {
+        return this.hasRoom;
     }
 }
