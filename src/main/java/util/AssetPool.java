@@ -1,5 +1,7 @@
 package util;
 
+import components.SpriteSheet;
+import org.lwjgl.system.CallbackI;
 import renderer.Shader;
 import renderer.Texture;
 
@@ -31,5 +33,9 @@ public class AssetPool {
             AssetPool.textures.put(file.getAbsolutePath(), texture);
             return texture;
         }
+    }
+
+    public static void addSpritesheet(String resourceName, SpriteSheet spriteSheet) {
+        File file = new File(resourceName);
     }
 }
