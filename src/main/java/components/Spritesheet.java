@@ -6,12 +6,12 @@ import renderer.Texture;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpriteSheet {
+public class Spritesheet {
 
     private Texture texture;
     private List<Sprite> sprites;
 
-    public SpriteSheet(Texture texture, int spriteWidth, int spriteHeight, int numSprites, int spacing) {
+    public Spritesheet(Texture texture, int spriteWidth, int spriteHeight, int numSprites, int spacing) {
         this.sprites = new ArrayList<>();
 
         this.texture = texture;
@@ -29,7 +29,9 @@ public class SpriteSheet {
                     new Vector2f(leftX, bottomY),
                     new Vector2f(leftX, topY)
             };
-            Sprite sprite = new Sprite(this.texture, texCords);
+            Sprite sprite = new Sprite();
+            sprite.setTexture(this.texture);
+            sprite.setTexCoords(texCords);
             this.sprites.add(sprite);
 
             currentX += spriteWidth + spacing;

@@ -1,31 +1,31 @@
 package components;
 
-import engineJade.Component;
 import engineJade.Transform;
 import imgui.ImGui;
+import engineJade.Component;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 import renderer.Texture;
 
 public class SpriteRenderer extends Component {
 
-    private Vector4f color;
-    private Sprite sprite;
+    private Vector4f color = new Vector4f(1, 1, 1, 1);
+    private Sprite sprite = new Sprite();
 
-    private Transform lastTransform;
-    private boolean isDirty = false;
+    private transient Transform lastTransform;
+    private transient boolean isDirty = false;
 
-    public SpriteRenderer(Vector4f color) {
-        this.color = color;
-        this.sprite = new Sprite(null);
-        this.isDirty = true;
-    }
-
-    public SpriteRenderer(Sprite sprite) {
-        this.sprite = sprite;
-        this.color = new Vector4f(1, 1, 1, 1);
-        this.isDirty = true;
-    }
+//    public SpriteRenderer(Vector4f color) {
+//        this.color = color;
+//        this.sprite = new Sprite(null);
+//        this.isDirty = true;
+//    }
+//
+//    public SpriteRenderer(Sprite sprite) {
+//        this.sprite = sprite;
+//        this.color = new Vector4f(1, 1, 1, 1);
+//        this.isDirty = true;
+//    }
 
     @Override
     public void start() {
@@ -34,7 +34,7 @@ public class SpriteRenderer extends Component {
 
     @Override
     public void update(float dt) {
-        if(!this.lastTransform.equals(this.gameObject.transform)) {
+        if (!this.lastTransform.equals(this.gameObject.transform)) {
             this.gameObject.transform.copy(this.lastTransform);
             isDirty = true;
         }
@@ -67,18 +67,17 @@ public class SpriteRenderer extends Component {
     }
 
     public void setColor(Vector4f color) {
-        if (this.color.equals(color)) {
+        if (!this.color.equals(color)) {
             this.isDirty = true;
             this.color.set(color);
         }
     }
 
     public boolean isDirty() {
-        return isDirty;
+        return this.isDirty;
     }
 
     public void setClean() {
         this.isDirty = false;
     }
-
 }
