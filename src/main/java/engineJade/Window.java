@@ -38,7 +38,7 @@ public class Window {
     public static void changeScene(int newScene) {
         switch (newScene) {
             case 0:
-                currentScene = new jade.LevelEditorScene();
+                currentScene = new LevelEditorScene();
                 currentScene.init();
                 currentScene.start();
                 break;
