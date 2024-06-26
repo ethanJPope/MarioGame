@@ -5,17 +5,10 @@ import com.google.gson.GsonBuilder;
 import components.Sprite;
 import components.SpriteRenderer;
 import components.Spritesheet;
-import engineJade.Camera;
-import engineJade.GameObject;
-import engineJade.Scene;
-import engineJade.Transform;
 import imgui.ImGui;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
 import org.joml.Vector4f;
 import util.AssetPool;
-
-import static org.lwjgl.glfw.GLFW.*;
 
 public class LevelEditorScene extends Scene {
 
@@ -52,11 +45,12 @@ public class LevelEditorScene extends Scene {
         obj2.addComponent(obj2SpriteRenderer);
         this.addGameObjectToScene(obj2);
 
-//        Gson gson = new GsonBuilder()
-//                .setPrettyPrinting()
-//                .create();
-//        String serialized = gson.toJson(obj1);
-//        System.out.println(serialized);
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Component.class, new ComponentDeserializer())
+                .create();
+        String serialized = gson.toJson(obj1);
+        System.out.println(serialized);
 //        GameObject obj = gson.fromJson(serialized, GameObject.class);
 //        System.out.println(obj);
     }
