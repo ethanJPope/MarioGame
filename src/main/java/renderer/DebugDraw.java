@@ -146,8 +146,8 @@ public class DebugDraw {
         Vector2f max = new Vector2f(center).add(new Vector2f(dimensions).mul(0.5f));
 
         Vector2f[] vertices = {
-                new Vector2f(min.x, min.y), new Vector2f(min.x, max.y),
-                new Vector2f(max.x, max.y), new Vector2f(max.x, min.y)
+              new Vector2f(min.x, min.y), new Vector2f(min.x, max.y),
+              new Vector2f(max.x, max.y), new Vector2f(max.x, min.y)
         };
 
         if (rotation != 0.0f) {
@@ -166,6 +166,7 @@ public class DebugDraw {
     // Add Circle methods
     // ==================================================
     public static void addCircle(Vector2f center, float radius) {
+        // TODO: ADD CONSTANTS FOR COMMON COLORS
         addCircle(center, radius, new Vector3f(0, 1, 0), 1);
     }
 
