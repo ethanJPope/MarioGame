@@ -1,6 +1,5 @@
 package components;
 
-import engineJade.Component;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 

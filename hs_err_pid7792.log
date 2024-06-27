@@ -32,9 +32,9 @@ Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
 C  [jdwp.dll+0x26918]
 
 Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
-j  engineJade.Window.changeScene(I)V+28
-j  engineJade.Window.init()V+162
-j  engineJade.Window.run()V+15
+j  jade.Window.changeScene(I)V+28
+j  jade.Window.init()V+162
+j  jade.Window.run()V+15
 j  Main.main([Ljava/lang/String;)V+5
 v  ~StubRoutines::call_stub 0x000001e58753100d
 
