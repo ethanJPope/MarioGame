@@ -259,14 +259,14 @@
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": -249.0,
+            "x": -248.32164,
             "y": 1.0
           },
           "scale": {
             "x": 0.25,
             "y": 0.25
           },
-          "rotation": 0.0,
+          "rotation": 1.0,
           "zIndex": 0,
           "uid": 64
         }

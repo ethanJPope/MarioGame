@@ -1,15 +1,16 @@
 package physics2dtmp;
 
 import org.joml.Vector2f;
-import org.junit.Test;
+import org.testng.annotations.Test;
 import physics2dtmp.primitives.Box2D;
 import physics2dtmp.primitives.Circle;
 import physics2dtmp.rigidbody.IntersectionDetector2D;
 import physics2dtmp.rigidbody.Rigidbody2D;
 import renderer.Line2D;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.TestNGAntTask.Mode.junit;
 
 public class CollisionDetectorTests {
     private final float EPSILON = 0.000001f;
