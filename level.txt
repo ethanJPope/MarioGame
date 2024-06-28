@@ -130,5 +130,551 @@
     ],
     "doSerialization": true,
     "isDead": false
+  },
+  {
+    "uid": 2,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.875,
+            "y": 2.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 46
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheet.png",
+              "width": 224,
+              "height": 32
+            },
+            "texCoords": [
+              {
+                "x": 0.21428572,
+                "y": 1.0
+              },
+              {
+                "x": 0.21428572,
+                "y": 0.5
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.5
+              },
+              {
+                "x": 0.14285715,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 47
+        }
+      },
+      {
+        "type": "components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheet.png",
+                      "width": 224,
+                      "height": 32
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.071428575,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.071428575,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheet.png",
+                      "width": 224,
+                      "height": 32
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.21428572,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.21428572,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheet.png",
+                      "width": 224,
+                      "height": 32
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.2857143,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.21428572,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.21428572,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheet.png",
+                      "width": 224,
+                      "height": 32
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.21428572,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.21428572,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "time": 0.19638394,
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 48
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "uid": 3,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.125,
+            "y": 3.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 50
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 0.8,
+            "y": 0.8,
+            "z": 0.8,
+            "w": 0.5
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/items.png",
+              "width": 112,
+              "height": 80
+            },
+            "texCoords": [
+              {
+                "x": 0.2857143,
+                "y": 1.0
+              },
+              {
+                "x": 0.2857143,
+                "y": 0.8
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.8
+              },
+              {
+                "x": 0.14285715,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 51
+        }
+      },
+      {
+        "type": "components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Question",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/items.png",
+                      "width": 112,
+                      "height": 80
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.14285715,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.57
+                },
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/items.png",
+                      "width": 112,
+                      "height": 80
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.2857143,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/items.png",
+                      "width": 112,
+                      "height": 80
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.42857143,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.42857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "time": 0.096468434,
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Question",
+          "uid": 52
+        }
+      },
+      {
+        "type": "components.NonPickable",
+        "properties": {
+          "uid": 53
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "uid": 4,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.875,
+            "y": 2.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 50
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/items.png",
+              "width": 112,
+              "height": 80
+            },
+            "texCoords": [
+              {
+                "x": 0.2857143,
+                "y": 1.0
+              },
+              {
+                "x": 0.2857143,
+                "y": 0.8
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.8
+              },
+              {
+                "x": 0.14285715,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 51
+        }
+      },
+      {
+        "type": "components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Question",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/items.png",
+                      "width": 112,
+                      "height": 80
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.14285715,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.57
+                },
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/items.png",
+                      "width": 112,
+                      "height": 80
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.2857143,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 16.0,
+                    "height": 16.0,
+                    "texture": {
+                      "filepath": "assets/images/items.png",
+                      "width": 112,
+                      "height": 80
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.42857143,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.42857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "time": 0.096468434,
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Question",
+          "uid": 52
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
   }
 ]

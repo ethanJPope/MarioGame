@@ -1,8 +1,10 @@
 package jade;
 
+import editor.GameViewWindow;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
+import observers.events.EventType;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.openal.AL;
@@ -10,6 +12,7 @@ import org.lwjgl.openal.ALC;
 import org.lwjgl.openal.ALCCapabilities;
 import org.lwjgl.openal.ALCapabilities;
 import org.lwjgl.opengl.GL;
+import physics2d.Physics2D;
 import renderer.*;
 import scenes.LevelEditorSceneInitializer;
 import scenes.Scene;
@@ -65,8 +68,10 @@ public class Window implements Observer {
         return Window.window;
     }
 
+    public static Physics2D getPhysics() { return currentScene.getPhysics(); }
+
     public static Scene getScene() {
-        return get().currentScene;
+        return currentScene;
     }
 
     public void run() {
@@ -195,7 +200,6 @@ public class Window implements Observer {
             glClear(GL_COLOR_BUFFER_BIT);
 
             if (dt >= 0) {
-                DebugDraw.draw();
                 Renderer.bindShader(defaultShader);
                 if (runtimePlaying) {
                     currentScene.update(dt);
@@ -203,10 +207,14 @@ public class Window implements Observer {
                     currentScene.editorUpdate(dt);
                 }
                 currentScene.render();
+                DebugDraw.draw();
             }
             this.framebuffer.unbind();
 
             this.imguiLayer.update(dt, currentScene);
+
+            KeyListener.endFrame();
+            MouseListener.endFrame();
             glfwSwapBuffers(glfwWindow);
 
             endTime = (float)glfwGetTime();
@@ -216,11 +224,11 @@ public class Window implements Observer {
     }
 
     public static int getWidth() {
-        return get().width;
+        return 1920;//get().width;
     }
 
     public static int getHeight() {
-        return get().height;
+        return 1080;//get().height;
     }
 
     public static void setWidth(int newWidth) {

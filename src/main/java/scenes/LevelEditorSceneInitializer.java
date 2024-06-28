@@ -3,10 +3,10 @@ package scenes;
 import components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
-import jade.GameObject;
-import jade.Prefabs;
-import jade.Sound;
+import jade.*;
 import org.joml.Vector2f;
+import physics2dtmp.PhysicsSystem2D;
+import physics2dtmp.rigidbody.Rigidbody2D;
 import util.AssetPool;
 
 import java.io.File;
@@ -29,6 +29,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         levelEditorStuff = scene.createGameObject("LevelEditor");
         levelEditorStuff.setNoSerialize();
         levelEditorStuff.addComponent(new MouseControls());
+        levelEditorStuff.addComponent(new KeyControls());
         levelEditorStuff.addComponent(new GridLines());
         levelEditorStuff.addComponent(new EditorCamera(scene.camera()));
         levelEditorStuff.addComponent(new GizmoSystem(gizmos));
@@ -132,8 +133,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
             if (ImGui.beginTabItem("Prefabs")) {
                 Spritesheet playerSprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
                 Sprite sprite = playerSprites.getSprite(0);
-                float spriteWidth = sprite.getWidth() * 4;
-                float spriteHeight = sprite.getHeight() * 4;
+                float spriteWidth = sprite.getWidth() * 2;
+                float spriteHeight = sprite.getHeight() * 2;
                 int id = sprite.getTexId();
                 Vector2f[] texCoords = sprite.getTexCoords();
 
