@@ -14,13 +14,10 @@ import physics2d.components.CircleCollider;
 import physics2d.components.Rigidbody2D;
 
 public class Physics2D {
-    private Vec2 gravity = new Vec2(0, -10.0f);
-    private World world = new World(gravity);
+    private final Vec2 gravity = new Vec2(0, -10.0f);
+    private final World world = new World(gravity);
 
     private float physicsTime = 0.0f;
-    private float physicsTimeStep = 1.0f / 60.0f;
-    private int velocityIterations = 8;
-    private int positionIterations = 3;
 
     public void add(GameObject go) {
         Rigidbody2D rb = go.getComponent(Rigidbody2D.class);
@@ -78,7 +75,10 @@ public class Physics2D {
     public void update(float dt) {
         physicsTime += dt;
         if (physicsTime >= 0.0f) {
+            float physicsTimeStep = 1.0f / 60.0f;
             physicsTime -= physicsTimeStep;
+            int velocityIterations = 8;
+            int positionIterations = 3;
             world.step(physicsTimeStep, velocityIterations, positionIterations);
         }
     }

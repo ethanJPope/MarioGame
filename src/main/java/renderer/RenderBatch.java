@@ -205,7 +205,7 @@ public class RenderBatch implements Comparable<RenderBatch> {
         Matrix4f transformMatrix = new Matrix4f().identity();
         if (isRotated) {
             transformMatrix.translate(sprite.gameObject.transform.position.x,
-                                        sprite.gameObject.transform.position.y, 0f);
+                    sprite.gameObject.transform.position.y, 0f);
             transformMatrix.rotate((float)Math.toRadians(sprite.gameObject.transform.rotation),
                     0, 0, 1);
             transformMatrix.scale(sprite.gameObject.transform.scale.x,

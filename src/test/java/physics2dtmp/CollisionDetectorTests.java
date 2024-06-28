@@ -8,8 +8,10 @@ import physics2dtmp.rigidbody.IntersectionDetector2D;
 import physics2dtmp.rigidbody.Rigidbody2D;
 import renderer.Line2D;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+//import static junit.framework.TestCase.assertTrue;
+//import static org.junit.Assert.assertFalse;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 import static org.testng.TestNGAntTask.Mode.junit;
 
 public class CollisionDetectorTests {

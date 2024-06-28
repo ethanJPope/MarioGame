@@ -57,18 +57,6 @@ dependencies {
 }
 
 
-task copyAssets(type: Copy) {
-    copy {
-        from "assets"
-        into "${buildDir}/libs/assets"
-    }
-
-    copy {
-        from "level.txt"
-        into "${buildDir}/libs"
-    }
-}
-
 task fatJar(type: Jar) {
     manifest.from jar.manifest
     from {
@@ -81,7 +69,6 @@ task fatJar(type: Jar) {
     with jar
 }
 
-fatJar.dependsOn(copyAssets)
 
 artifacts {
     archives fatJar
