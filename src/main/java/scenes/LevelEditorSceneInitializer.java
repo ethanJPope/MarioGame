@@ -3,10 +3,9 @@ package scenes;
 import components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
-import jade.*;
+import jade.GameObject;
+import jade.Prefabs;
 import org.joml.Vector2f;
-import physics2dtmp.PhysicsSystem2D;
-import physics2dtmp.rigidbody.Rigidbody2D;
 import util.AssetPool;
 
 public class LevelEditorSceneInitializer extends SceneInitializer {
